@@ -10,3 +10,5 @@
 acdisplay接受outcome后记下成功的记录，timer接受outcome后将计时器关闭并置0.
   如果在倒计时结束前没有完成，timer将outcome设置为false，acdisplay接受outcome后记下失败的记录，timer关闭并置0
 此时activitydiary将禁用所有android授权给activitydiary所管理的app.
+
+对project3的展示在此账号的project3项目中。
