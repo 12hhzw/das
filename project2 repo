@@ -1,0 +1,12 @@
+ 需要对未来所希望完成的事务进行记录，同时倒计时，如果未完成，则禁用一段时间事先指定好的app。如果成功完成，则无事发生。
+无论是否成功都会记录下这次事务。
+  通过domain model.初步定下需要的几个key concepts:apps, android, timer ,  acdisplay
+其中apps作为可以被禁用的app， android为activitydiary授权禁用apps，同时作为功能的协调。timer作为计时装置，
+提供倒计时功能。acdisplay为用户记录这次事务。
+  通过sequence diagram的设计，整个可能的流程为——进入到activitydiary 后，activitydiary 通过设计好的“display"
+接口将
+用户的行为以及完成情况反映在acdisplay对象上。 需要使用该功能时，activitydiary通过"active”接口激活timer对象。
+ 之后，如果用户在倒计时结束前完成，通过手动停止倒计时并且按下确认键，将bool变量outcome置为true，
+acdisplay接受outcome后记下成功的记录，timer接受outcome后将计时器关闭并置0.
+  如果在倒计时结束前没有完成，timer将outcome设置为false，acdisplay接受outcome后记下失败的记录，timer关闭并置0
+此时activitydiary将禁用所有android授权给activitydiary所管理的app.
